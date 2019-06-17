@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/chat_sdk_actionbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:id="@+id/chat_sdk_search_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/textView"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_search" />
+
+        <TextView
+            android:id="@+id/chat_sdk_et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/chat_sdk_search_image"
+            android:layout_below="@id/textView"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/chat_sdk_search_image"
+            android:gravity="center_vertical"
+            android:text="@string/search"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Invite More Friends"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/chat_sdk_btn_invite_from_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FB" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Invite from facebook"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chat_sdk_search_image"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:text="@string/contacts_upper_case"
+                android:textSize="10sp" />
+
+            <CheckBox
+                android:id="@+id/chat_sdk_chk_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:paddingRight="8dp"
+                android:text="@string/select_all" />
+        </RelativeLayout>
+
+
+        <ListView
+            android:id="@+id/chat_sdk_list_contacts"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/chat_sdk_btn_add_contacts"
+            android:layout_below="@id/linear"
+            android:scrollbars="none"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/chat_sdk_btn_add_contacts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/start_chat" />
+    </RelativeLayout>
+</LinearLayout>

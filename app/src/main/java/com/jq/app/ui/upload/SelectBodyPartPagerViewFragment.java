@@ -1,0 +1,258 @@
+package com.jq.app.ui.upload;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.util.Xml;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.jq.app.R;
+import com.jq.app.data.model.BodyPoint;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+
+public class SelectBodyPartPagerViewFragment extends Fragment {
+
+    public static float BODY_IMAGE_WIDTH = 900;
+    public static float BODY_IMAGE_HEIGHT = 1490;
+    public static float CLICKED_POINT_DEFAULT_SIZE = 50;
+
+    private int imageResource;
+
+    protected RelativeLayout imageContainer;
+    protected ArrayList<BodyPoint> bodyPoints = new ArrayList<>();
+
+    public SelectBodyPartPagerViewFragment() {
+    }
+
+    public static SelectBodyPartPagerViewFragment newInstance(int imageResource) {
+        SelectBodyPartPagerViewFragment fragment = new SelectBodyPartPagerViewFragment();
+        fragment.setImageResource(imageResource);
+        return fragment;
+    }
+
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Bundle bundle = this.getArguments();
+        View view = inflater.inflate(R.layout.fragment_body_part_pager_view, container, false);
+
+        imageContainer = view.findViewById(R.id.body_parts_container);
+        ImageView bodyImage = view.findViewById(R.id.img_body);
+        bodyImage.setImageResource(imageResource);
+        bodyImage.setOnTouchListener(image_Listener);
+
+        Set<Map.Entry<String, BodyPoint>> entries = SelectBodyPartActivity.selectedPoints.entrySet();
+        for (Map.Entry<String, BodyPoint> entry : entries) {
+            BodyPoint value = entry.getValue();
+            for (BodyPoint bodyPoint : bodyPoints) {
+                if (value.code.equalsIgnoreCase(bodyPoint.code)) {
+                    if (value.getView().getParent() != null) {
+                        ((ViewGroup) value.getView().getParent()).removeView(value.getView()); // <- fix
+                    }
+                    imageContainer.addView(value.getView());
+                    break;
+                }
+            }
+
+        }
+
+        return view;
+    }
+
+    private View.OnTouchListener image_Listener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            float screenX = event.getX();
+            float screenY = event.getY();
+            float viewX = screenX - v.getLeft();
+            float viewY = screenY - v.getTop();
+
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    Log.d("DEBUG", "On touch (down)" + String.valueOf(viewX) + String.valueOf(viewY));
+                    processTouchDownEvent(v.getWidth(), v.getHeight(), viewX, viewY);
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    //imageContainer.removeAllViews();
+                    /*if(clickedPoint!=null && imageContainer!=null) {
+                        imageContainer.removeView(clickedPoint);
+                    }*/
+                    Log.d("DEBUG", "On touch (up)" + String.valueOf(viewX) + "::" + String.valueOf(viewY));
+                    processTouchUpEvent(v.getWidth(), v.getHeight(), viewX, viewY);
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+                    //imageContainer.removeAllViews();
+                    Log.d("DEBUG", "On touch (move)" + String.valueOf(viewX) + String.valueOf(viewY));
+                    break;
+            }
+
+            return true;
+        }
+    };
+
+    public float getBodyPointSize(int viewWidth, int viewHeight) {
+        float viewRatio = (float) viewHeight / (float) viewWidth;
+        float imageRatio = BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH;
+        if (viewRatio >= imageRatio) {
+            return CLICKED_POINT_DEFAULT_SIZE * (float) viewWidth / BODY_IMAGE_WIDTH;
+        } else {
+            return CLICKED_POINT_DEFAULT_SIZE * (float) viewHeight / BODY_IMAGE_HEIGHT;
+        }
+    }
+
+    public int getClickedPointIndex(int viewWidth, int viewHeight, float viewX, float viewY) {
+        float bodyPointSize = getBodyPointSize(viewWidth, viewHeight);
+        float viewRatio = (float) viewHeight / (float) viewWidth;
+        float imageRatio = BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH;
+        if (viewRatio >= imageRatio) {
+            for (int i = 0; i < bodyPoints.size(); i++) {
+                BodyPoint bodyPoint = bodyPoints.get(i);
+                float minX = bodyPoint.x * viewWidth / BODY_IMAGE_WIDTH - bodyPointSize / 2;
+                float maxX = bodyPoint.x * viewWidth / BODY_IMAGE_WIDTH + bodyPointSize / 2;
+                float minY = bodyPoint.y * viewWidth / BODY_IMAGE_WIDTH - bodyPointSize / 2 + (viewHeight - viewWidth * BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH) / 2;
+                float maxY = bodyPoint.y * viewWidth / BODY_IMAGE_WIDTH + bodyPointSize / 2 + (viewHeight - viewWidth * BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH) / 2;
+                Log.d("DEBUG", "getClickedPointIndex" + String.valueOf(minX) + "-" + String.valueOf(minY));
+                if (viewX >= minX && viewX <= maxX && viewY >= minY && viewY <= maxY) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < bodyPoints.size(); i++) {
+                BodyPoint bodyPoint = bodyPoints.get(i);
+                float minX = bodyPoint.x * viewHeight / BODY_IMAGE_HEIGHT - bodyPointSize / 2 + (viewWidth - viewHeight * BODY_IMAGE_WIDTH / BODY_IMAGE_HEIGHT) / 2;
+                float maxX = bodyPoint.x * viewHeight / BODY_IMAGE_HEIGHT + bodyPointSize / 2 + (viewWidth - viewHeight * BODY_IMAGE_WIDTH / BODY_IMAGE_HEIGHT) / 2;
+                float minY = bodyPoint.y * viewHeight / BODY_IMAGE_HEIGHT - bodyPointSize / 2;
+                float maxY = bodyPoint.y * viewHeight / BODY_IMAGE_HEIGHT + bodyPointSize / 2;
+                Log.d("DEBUG", "getClickedPointIndex-2" + String.valueOf(minX) + "-" + String.valueOf(minY));
+                if (viewX >= minX && viewX <= maxX && viewY >= minY && viewY <= maxY) {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public int calculateMarginLeft(int bodyPointIndex, int viewWidth, int viewHeight) {
+        BodyPoint bodyPoint = bodyPoints.get(bodyPointIndex);
+        float bodyPointSize = getBodyPointSize(viewWidth, viewHeight);
+        float viewRatio = (float) viewHeight / (float) viewWidth;
+        float imageRatio = BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH;
+        if (viewRatio >= imageRatio) {
+            float minX = bodyPoint.x * viewWidth / BODY_IMAGE_WIDTH - bodyPointSize;
+            Log.d("DEBUG", "calculateMarginLeft" + String.valueOf(minX));
+            return (int) minX;
+
+        } else {
+            float minX = bodyPoint.x * viewHeight / BODY_IMAGE_HEIGHT - bodyPointSize + (viewWidth - viewHeight * BODY_IMAGE_WIDTH / BODY_IMAGE_HEIGHT) / 2;
+            Log.d("DEBUG", "calculateMarginLeft-2" + String.valueOf(minX));
+            return (int) minX;
+        }
+    }
+
+    public int calculateMarginTop(int bodyPointIndex, int viewWidth, int viewHeight) {
+        BodyPoint bodyPoint = bodyPoints.get(bodyPointIndex);
+
+        float bodyPointSize = getBodyPointSize(viewWidth, viewHeight);
+        float viewRatio = (float) viewHeight / (float) viewWidth;
+        float imageRatio = BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH;
+        if (viewRatio >= imageRatio) {
+            float minY = bodyPoint.y * viewWidth / BODY_IMAGE_WIDTH - bodyPointSize + (viewHeight - viewWidth * BODY_IMAGE_HEIGHT / BODY_IMAGE_WIDTH) / 2;
+            Log.d("DEBUG", "calculateMarginTop" + String.valueOf(minY));
+
+            return (int) minY;
+        } else {
+            float minY = bodyPoint.y * viewHeight / BODY_IMAGE_HEIGHT - bodyPointSize;
+            Log.d("DEBUG", "calculateMarginTop-2" + String.valueOf(minY));
+            return (int) minY;
+        }
+    }
+
+    public void processTouchDownEvent(int viewWidth, int viewHeight, float viewX, float viewY) {
+       /* ImageView clicked_point = new ImageView(getActivity());
+        int clickedEffectPointSize = (int) getBodyPointSize(viewWidth, viewHeight) * 2;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                clickedEffectPointSize, clickedEffectPointSize);
+        int pointAddressIndex = getClickedPointIndex(viewWidth, viewHeight, viewX, viewY);
+        Log.d("DEBUG", "processTouchDownEvent" + "" + pointAddressIndex);
+        if (pointAddressIndex < 0) return;
+
+        int marginLeft = calculateMarginLeft(pointAddressIndex, viewWidth, viewHeight);
+        int marginTop = calculateMarginTop(pointAddressIndex, viewWidth, viewHeight);
+        Log.d("DEBUG", "processTouchDownEvent left top" + " " + marginLeft + "-" + marginTop);
+        layoutParams.setMargins(marginLeft, marginTop, 0, 0);
+        clicked_point.setLayoutParams(layoutParams);
+        clicked_point.setImageResource(R.mipmap.clicked_point);
+
+        imageContainer.addView(clicked_point);*/
+        //clickedPoint = clicked_point;
+    }
+
+    public void processTouchUpEvent(int viewWidth, int viewHeight, float viewX, float viewY) {
+        int pointAddressIndex = getClickedPointIndex(viewWidth, viewHeight, viewX, viewY);
+        Log.d("DEBUG", "image point " + String.valueOf(viewX) + String.valueOf(viewY) + "viewWidth::" + viewWidth + "viewHeight::" + viewHeight);
+        if (pointAddressIndex < 0) return;
+
+        String bodyPartCode = getBodyPartCode(pointAddressIndex);
+        Toast.makeText(getActivity(), bodyPartCode, Toast.LENGTH_SHORT).show();
+        if (pointAddressIndex < bodyPoints.size()) {
+            String code = bodyPoints.get(pointAddressIndex).code;
+
+            BodyPoint bodyPoint = SelectBodyPartActivity.selectedPoints.get(code);
+            if (bodyPoint == null) {
+                ImageView clicked_point = addView(viewWidth, viewHeight, pointAddressIndex);
+                BodyPoint p = bodyPoints.get(pointAddressIndex);
+                p.setView(clicked_point);
+                SelectBodyPartActivity.selectedPoints.put(bodyPoints.get(pointAddressIndex).code, p);
+            } else {
+                if (bodyPoint.getView() != null)
+                    imageContainer.removeView(bodyPoint.getView());
+                SelectBodyPartActivity.selectedPoints.remove(code);
+            }
+        }
+        //   moveVideosActivity(bodyPartCode);
+    }
+
+    private ImageView addView(int viewWidth, int viewHeight, int pointAddressIndex) {
+        ImageView clicked_point = new ImageView(getActivity());
+        int clickedEffectPointSize = (int) getBodyPointSize(viewWidth, viewHeight) * 2;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                clickedEffectPointSize, clickedEffectPointSize);
+        Log.d("DEBUG", "processTouchDownEvent" + "" + pointAddressIndex);
+        int marginLeft = calculateMarginLeft(pointAddressIndex, viewWidth, viewHeight);
+        int marginTop = calculateMarginTop(pointAddressIndex, viewWidth, viewHeight);
+        Log.d("DEBUG", "processTouchDownEvent left top" + " " + marginLeft + "-" + marginTop);
+        layoutParams.setMargins(marginLeft, marginTop, 0, 0);
+        clicked_point.setLayoutParams(layoutParams);
+        clicked_point.setImageResource(R.mipmap.clicked_point);
+        imageContainer.addView(clicked_point);
+        return clicked_point;
+    }
+
+
+    public String getBodyPartCode(int index) {
+        if (index > -1 && index < bodyPoints.size()) {
+            BodyPoint bodyPoint = bodyPoints.get(index);
+            return bodyPoint.code;
+        }
+
+        return "";
+    }
+
+}

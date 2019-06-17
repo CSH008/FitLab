@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/RowStyle"
+    android:layout_margin="5dp"
+    android:id="@+id/chat_sdk_root_view_text_friend">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_user_image"
+        style="@style/CircleIconStyle"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_profile" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/content"
+        android:layout_toLeftOf="@id/txt_time"
+        android:layout_toRightOf="@+id/img_user_image"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bubble_left"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_content"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:text="Message text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </RelativeLayout>
+
+<!--        <com.braunster.chatsdk.view.ChatBubbleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:padding="6dp"
+            app:bubble_gravity="left"
+            android:id="@+id/txt_content"
+            style="@style/TextViewStyle"/>-->
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Time"
+        android:id="@+id/txt_time"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        style="@style/MessageDateStyle"/>
+</RelativeLayout>

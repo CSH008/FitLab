@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/header_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff8bc049"
+        android:gravity="center"
+        android:padding="5.0dip"
+        android:text="TEXT"
+        android:textColor="#ffffffff"
+        android:textSize="15.0dip" />
+
+    <LinearLayout
+        android:id="@+id/llBase"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:background="#ff8bc049">
+
+        <TextView
+            android:id="@+id/h_1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="0.89"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:text="Body Movement"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/h_2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="1.0"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:text="Sets"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/h_3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="1.0"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:text="Body"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/h_4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="0.97"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:text="R/L"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/h_5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.97"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:text="Time"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+      <!--  <ImageView
+            android:id="@+id/timer_icon"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@android:color/white"
+            android:onClick="onClick"
+            android:padding="8.0dip" />-->
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/rowView"
+        android:layout_width="fill_parent"
+        android:layout_height="2.0dip"
+        android:background="#ff8bc049" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

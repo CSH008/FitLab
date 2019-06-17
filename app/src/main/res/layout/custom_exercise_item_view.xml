@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llMainView"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:background="#ff0000">
+
+        <TextView
+            android:id="@+id/c_1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="0.89"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="2.0dip"
+            android:text="-"
+            android:textColor="#ff434343"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/c_2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="1.0"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="2.0dip"
+            android:text="-"
+            android:textColor="#ff696969"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/c_3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="1.0"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="2.0dip"
+            android:text="-"
+            android:textColor="#ff696969"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/c_4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1.0dip"
+            android:layout_weight="0.97"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="2.0dip"
+            android:text="-"
+            android:textColor="#ff696969"
+            android:textSize="15.0dip" />
+
+        <TextView
+            android:id="@+id/c_5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.97"
+            android:background="#ffffffff"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="2.0dip"
+            android:text="-"
+            android:textColor="#ff696969"
+            android:textSize="15.0dip" />
+
+        <ImageView
+            android:id="@+id/timer_icon"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@android:color/white"
+            android:onClick="onClick"
+            android:padding="8.0dip"
+            android:src="@drawable/ic_action_5" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineView1"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_below="@+id/llMainView"
+        android:background="#ff0000" />
+
+    <View
+        android:id="@+id/selected_view"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_alignTop="@+id/llMainView"  />
+</RelativeLayout>

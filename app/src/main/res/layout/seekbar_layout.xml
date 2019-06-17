@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="5dp">
+    <item
+        android:id="@+id/SecondaryProgress"
+        android:drawable="@mipmap/seekbar_gray"/>
+    <item
+        android:id="@+android:id/progress"
+        android:drawable="@mipmap/seekbar_progress"/>
+</layer-list>

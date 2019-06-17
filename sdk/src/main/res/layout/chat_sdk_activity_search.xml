@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/chat_sdk_actionbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/chat_sdk_search_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/chat_sdk_et_search_input"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:imeOptions="actionSearch"
+                android:inputType="text" />
+
+            <ImageView
+                android:id="@+id/chat_sdk_btn_search"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="right"
+                android:padding="12dp"
+                android:src="@drawable/ic_search"
+                android:text="@string/search" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/chat_sdk_chk_select_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/chat_sdk_search_linear"
+            android:enabled="false"
+            android:paddingRight="8dp"
+            android:text="@string/select_all" />
+
+        <ListView
+            android:id="@+id/chat_sdk_list_search_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/chat_sdk_btn_add_contacts"
+            android:layout_below="@id/chat_sdk_chk_select_all"
+            android:layout_gravity="center_horizontal"
+            android:scrollbars="none" />
+
+        <Button
+            android:id="@+id/chat_sdk_btn_add_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/add_contacts" />
+
+    </RelativeLayout>
+</LinearLayout>

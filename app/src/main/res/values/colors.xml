@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#f10826</color>
+    <color name="colorPrimaryDark">#cb031d</color>
+    <color name="colorPrimaryLight">#ff2323</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_alpha_40">#66000000</color>
+
+    <color name="primary">#42cb5a</color>
+    <color name="primary_dark">#FFFFFF</color>
+    <color name="primary_light">#00BBDEFB</color>
+    <color name="timer_text">#D95C4C</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="colorTranslate">#77009de4</color>
+    <color name="black_overlay">#66000000</color>
+
+    <color name="clearColor">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="pink">#FF00FF</color>
+    
+    <color name="seekbar_mobility">#FF0000</color>
+    <color name="seekbar_exercise">#f1f507</color>
+    <color name="seekbar_stretching">#0000FF</color>
+    <color name="seekbar_pain_level">#FF00FF</color>
+    <color name="seekbar_weight">#42cb5a</color>
+
+    <color name="dark_gray">#424242</color>
+    <color name="light_gray">#aaaaaa</color>
+    <color name="medium_grey">#9E9E9E</color>
+    <color name="button_grey">#757575</color>
+
+    <color name="colorBackground">@android:color/transparent</color>
+    <color name="colorTintedBackground">#cdcdcd</color>
+
+    <color name="darkTheme_colorPrimary">#2196F3</color>
+    <color name="darkTheme_colorPrimaryDark">#1E88E5</color>
+    <color name="darkTheme_colorAccent">#2196F3</color>
+    <color name="darkTheme_colorBackground">#303030</color>
+    <color name="darkTheme_colorTintedBackground">#424242</color>
+
+    <color name="classic_colorPrimary">#607d8b</color>
+    <color name="classic_colorPrimaryDark">#455a64</color>
+    <color name="classic_colorAccent">#455a64</color>
+    <color name="classic_colorBackground">@android:color/transparent</color>
+    <color name="classic_colorTintedBackground">#cdcdcd</color>
+
+    <color name="classic_darkTheme_colorPrimary">#37474f</color>
+    <color name="classic_darkTheme_colorPrimaryDark">#263238</color>
+    <color name="classic_darkTheme_colorAccent">#90a4ae</color>
+    <color name="classic_darkTheme_colorBackground">#303030</color>
+    <color name="classic_darkTheme_colorTintedBackground">#263238</color>
+    <color name="background_border">#f30303</color>
+
+
+    <color name="card_shadow_1">#000000</color>
+    <color name="card_shadow_2">#A1030303</color>
+
+    <color name="new_appointment_color">#86C981</color>
+    <color name="add_to_waitlist_color">#FDC99A</color>
+    <color name="personal_task_color">#0E0D0D</color>
+    <color name="edit_working_hour_color">#2397F3</color>
+
+    <color name="tab_selected">#fdc95a</color>
+    <color name="purple">#ffff2ef5</color>
+    <color name="gray_rim">#ffaaaaaa</color>
+    <color name="amrap">#ffff2ef5</color>
+    <color name="emom">#ff05c9fe</color>
+    <color name="stopwatch">#fffbf215</color>
+    <color name="tabata">#fffc6604</color>
+    <color name="timer">#ff9afe02</color>
+    <color name="gray_selecter">#ffbfbfbf</color>
+    <color name="green_header">#ff8bc049</color>
+    <color name="selected">#5fcfcfcf</color>
+    <color name="unselected">#00cfcfcf</color>
+
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+    <color name="toolbar">#efefef</color>
+    <color name="toolbar_text">#8f000000</color>
+    <color name="accent">#2789e4</color>
+
+    <color name="colorMobility">#88BE57</color>
+    <color name="colorExercise">#0245C6</color>
+    <color name="colorCardio">#FF8038</color>
+    <color name="colorStretching">#AE29D1</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+
+
+</resources>

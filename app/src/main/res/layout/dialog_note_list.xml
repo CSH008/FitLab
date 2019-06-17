@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="#25000000">
+
+        <TextView
+            android:id="@+id/text_view_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
+            android:text="Add"
+            android:textColor="#0D2CC0" />
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/image_back"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Notes"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/no_notes"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/_40sdp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/open_sans_reguler"
+            android:text="Note list is empty, Please add by click on Add button"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10sdp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/text_view_done"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_bg_red"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Done"
+        android:textColor="@color/white" />
+</LinearLayout>

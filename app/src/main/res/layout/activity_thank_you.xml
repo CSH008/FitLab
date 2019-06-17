@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@id/toolbarView"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/background_toolbar_translucent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@id/btn_back"
+                android:layout_width="40.0dip"
+                android:layout_height="40.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/btn_back"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/dark_gray"
+                android:textSize="17.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@id/header_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:text="AMRAP"
+        android:textColor="#ff000000"
+        android:textSize="30.0dip"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5.0dip"
+        android:text="Set Your Amrap Time"
+        android:textColor="#ff000000"
+        android:textSize="15.0dip" />
+
+    <ImageView
+        android:id="@+id/iv_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_thumb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20.0dip"
+        android:text="Nice Job!"
+        android:textColor="#ff000000"
+        android:textSize="30.0dip" />
+</RelativeLayout>

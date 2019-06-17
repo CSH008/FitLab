@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/common_5_dp"
+    android:background="@color/news_icon_background"
+    android:paddingBottom="@dimen/common_5_dp"
+    android:paddingEnd="@dimen/common_10_dp"
+    android:paddingLeft="@dimen/common_10_dp"
+    android:paddingRight="@dimen/common_10_dp"
+    android:paddingStart="@dimen/common_10_dp"
+    android:paddingTop="@dimen/common_5_dp">
+
+    <TextView
+        android:id="@+id/txtSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/txtSectionTime"
+        android:text="Headedr"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtSectionTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@+id/btnCheck"
+        android:padding="5dp"
+        android:text="00:00"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/btnCheck"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/btn_edit" />
+
+    <ImageView
+        android:id="@+id/btn_edit"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

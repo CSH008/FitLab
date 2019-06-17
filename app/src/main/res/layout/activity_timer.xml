@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jq.app.ui.exercise.TimerActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/background_toolbar_translucent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text=" "
+                android:textColor="@color/dark_gray"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/timer_back">
+
+            <at.grabner.circleprogress.CircleProgressView
+                android:id="@+id/circleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="28dp"
+                CircleProgressView:cpv_autoTextSize="true"
+                CircleProgressView:cpv_barColor="@color/primary"
+                CircleProgressView:cpv_barWidth="18dp"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_maxValue="300"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimColor="@color/primary_light"
+                CircleProgressView:cpv_rimWidth="18dp"
+                CircleProgressView:cpv_seekMode="false"
+                CircleProgressView:cpv_showUnit="false"
+                CircleProgressView:cpv_spinColor="@color/primary"
+                CircleProgressView:cpv_textColor="@color/primary_dark"
+                CircleProgressView:cpv_textScale="1"
+                CircleProgressView:cpv_value="0"
+                app:cpv_textMode="Text" />
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="30:00"
+                android:textColor="@color/timer_text"
+                android:textSize="70dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="30dp">
+
+            <ImageView
+                android:id="@+id/btn_timer_start"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@drawable/btn_start_timer" />
+
+            <ImageView
+                android:id="@+id/btn_timer_reset"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
+                android:onClick="onClick"
+                android:src="@drawable/btn_reset_timer" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

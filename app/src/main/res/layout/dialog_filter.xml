@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="#25000000">
+
+        <TextView
+            android:id="@+id/text_view_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
+            android:text="Apply"
+            android:textColor="#0D2CC0" />
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/image_back"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Filter"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Category" />
+    <TextView
+        android:id="@+id/text_view_category"
+        android:layout_width="match_parent"
+        android:background="@drawable/text_border"
+        android:padding="@dimen/_10sdp"
+        android:drawableRight="@drawable/arrow_down"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="Select"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+       />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Body part" />
+    <TextView
+        android:id="@+id/text_view_body_part"
+        android:layout_width="match_parent"
+        android:background="@drawable/text_border"
+        android:padding="@dimen/_10sdp"
+        android:drawableRight="@drawable/arrow_down"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="Select"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Equipment" />
+    <TextView
+        android:id="@+id/text_view_equipment"
+        android:layout_width="match_parent"
+        android:background="@drawable/text_border"
+        android:padding="@dimen/_10sdp"
+        android:drawableRight="@drawable/arrow_down"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="Select"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        />
+</LinearLayout>

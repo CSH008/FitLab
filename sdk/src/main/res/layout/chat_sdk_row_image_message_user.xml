@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    style="@style/RowStyle"
+    android:layout_margin="5dp"
+    android:id="@+id/chat_sdk_root_view_image_user">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_user_image"
+        style="@style/CircleIconStyle"
+        android:layout_width="61dp"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_profile" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_time"
+        android:text="time"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="3dp"
+        android:gravity="center_horizontal"
+        style="@style/MessageDateStyle"/>
+
+    <!--android:layout_toRightOf="@id/txt_time"-->
+    <!-- DO not change this ImageView id the id is used in all message layouts!-->
+    <com.jq.chatsdk.view.ChatBubbleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_sdk_image"
+        android:layout_toLeftOf="@id/img_user_image"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        app:bubble_with_click_indicator="false"
+        app:bubble_gravity="right"
+        android:paddingRight="5dp"
+        android:visibility="visible"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/chat_sdk_image"
+        android:layout_toLeftOf="@id/img_user_image"
+        android:id="@id/chat_sdk_progress_bar"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

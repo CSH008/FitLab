@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_sdk_root_view_image_friend"
+    style="@style/RowStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_user_image"
+        style="@style/CircleIconStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_profile" />
+
+    <TextView
+        android:id="@+id/txt_time"
+        style="@style/MessageDateStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:padding="3dp"
+        android:text="Time" />
+
+    <!-- DO not change this ImageView id the id is used in all message layouts!-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img_user_image"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.jq.chatsdk.view.ChatBubbleImageView
+            android:id="@+id/chat_sdk_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:visibility="visible"
+            app:bubble_gravity="left"
+            app:bubble_with_click_indicator="false" />
+
+        <ImageView
+            android:id="@+id/icon_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_play_circle_outline_black_24dp"
+            android:background="@drawable/circle_right_gray_back"
+            android:visibility="gone"/>
+
+        <ProgressBar
+            android:id="@+id/chat_sdk_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!--<ImageView-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:id="@+id/chat_sdk_image"-->
+
+    <!--android:background="@drawable/bubble_left_2"-->
+    <!--android:layout_gravity="left"-->
+    <!--/>-->
+
+</RelativeLayout>

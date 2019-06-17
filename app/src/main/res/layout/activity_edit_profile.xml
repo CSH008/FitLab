@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.jq.app.ui.profile.EditProfileActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/frame_profile_image_container" >
+
+                <ProgressBar
+                    android:id="@+id/chat_sdk_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    style="@style/CircleIconStyle"
+                    android:id="@+id/profileImage"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_profile"
+                    app:border_color="@color/black_de"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/gray_shadow_white_back"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/username" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:hint="@string/prompt_name"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/txtCardNumber"
+                    android:nextFocusForward="@+id/txtCardNumber"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:text=""
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gray_shadow_white_back"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/ic_age"
+                    android:tint="@color/dark_gray"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:hint="@string/prompt_age"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/txtCardNumber"
+                    android:nextFocusForward="@+id/txtCardNumber"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:text=""
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gray_shadow_white_back"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/ic_weight"
+                    android:tint="@color/dark_gray"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:hint="@string/prompt_weight"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/txtCardNumber"
+                    android:nextFocusForward="@+id/txtCardNumber"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:text=""
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gray_shadow_white_back"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/ic_height"
+                    android:tint="@color/dark_gray"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:hint="@string/prompt_height"
+                    android:inputType="number"
+                    android:nextFocusDown="@+id/txtCardNumber"
+                    android:nextFocusForward="@+id/txtCardNumber"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:text=""
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shadow_red"
+                    android:onClick="onClick"
+                    android:text="@string/action_save"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

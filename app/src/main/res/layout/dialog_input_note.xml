@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="#25000000">
+
+        <TextView
+            android:id="@+id/text_view_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
+            android:text="Save"
+            android:textColor="#0D2CC0" />
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/image_back"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Notes"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+   <EditText
+       android:id="@+id/edit_text_note"
+       android:layout_width="match_parent"
+       android:gravity="start"
+       android:fontFamily="@font/open_sans_reguler"
+       android:hint="Enter note here"
+       android:layout_height="match_parent" />
+</LinearLayout>

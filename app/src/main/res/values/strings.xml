@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_world">Hello world!</string>
+    <string name="take_photo">Take a Photo</string>
+    <string name="upload_server">Upload</string>
+    <string name="uploaded">Successfully uploaded</string>
+
+    <string name="app_name">FitLab</string>
+
+    <string name="setting_speedUnits">Unit of measurement for the speed</string>
+    <string name="setting_tempUnits">Unit of measure for the temperature</string>
+    <string name="setting_pressureUnits">Unit of measurement for pressure</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="title_payment_details">Payment Details</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_cart">Cart</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_choose">Choose</string>
+    <string name="action_submit">Submit</string>
+
+    <string name="action_camera">Camera</string>
+    <string name="action_home">Home</string>
+    <string name="action_chat">Chat</string>
+
+    <string name="action_sets_reps">Sets/Reps</string>
+
+    <string name="title_exercise">Exercise</string>
+    <string name="title_mobility">Mobility</string>
+    <string name="title_stretching">Stretching</string>
+    <string name="category_exercise">Exercise Videos</string>
+    <string name="category_roller">Roller Videos</string>
+    <string name="category_stretching">Stretching Videos</string>
+    <string name="category_my_tracker">My Tracker</string>
+    <string name="category_cardio">Cardio</string>
+    <string name="category_timer">Timer</string>
+
+    <string name="category_sport">Sports</string>
+    <string name="category_my_workout">My WorkOut</string>
+
+    <string name="sport_vollyball">Volleyball Videos</string>
+    <string name="sport_basketball">Basketball Video </string>
+    <string name="sport_football">Football Video </string>
+    <string name="sport_baseball">Baseball Videos</string>
+
+    <string name="sport_soccer">Soccer Video </string>
+    <string name="sport_gymnastics">Gymnastics Videos</string>
+
+    <string name="category_logout">Logout</string>
+    <string name="media_category">Choose Media Category</string>
+    <string name="dots_category">Choose Body Part Category</string>
+    <string name="title_activity_splash" translatable="false">SplashActivity</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="msg_click_body_part">Click on any of the \n body parts to view video</string>
+    <string name="msg_click_baseball">Select your possition</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="call">Call </string>
+    <string name="prompt_full_name">Full Name</string>
+    <string name="prompt_username">Username</string>
+    <string name="profile_username">Username (You can not change)</string>
+    <string name="prompt_surname">Name Surname</string>
+    <string name="prompt_number">Mobile Number</string>
+    <string name="prompt_password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="prompt_medial_details">Medical Details</string>
+    <string name="prompt_search_video">Search Video</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Create Account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_not_match_password">Passwords are not match</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_no_contact_phone">You do not have the contact number</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="prompt_name">Name</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_weight">Weight</string>
+    <string name="prompt_height">Height</string>
+    <string name="prompt_name_on_card">Name on card</string>
+    <string name="prompt_card_number">Card Number</string>
+    <string name="prompt_expired_date">Expired Date</string>
+    <string name="prompt_cvv">CVV</string>
+    <string name="prompt_street">Street</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_state">State</string>
+    <string name="prompt_zip_code">Zip Code</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <string name="nav_menu_home">Home</string>
+    <string name="nav_menu_past_reservations">Past Reservations</string>
+    <string name="nav_menu_web_cam">Webcam</string>
+    <string name="nav_menu_reservation">Reservation</string>
+    <string name="nav_menu_weather">Weather</string>
+    <string name="nav_menu_facebook">Events</string>
+    <string name="nav_menu_notifications">Notifications</string>
+    <string name="title_notification">Notification</string>
+    <string name="title_events">Glauco BeachClub Events</string>
+    <string name="nav_menu_contact_us">Contact Us</string>
+    <string name="nav_menu_profile">My Profile</string>
+    <string name="nav_menu_settings">Settings</string>
+    <string name="nav_menu_logout">Log Out</string>
+    <string name="title_activity_profile">My Profile</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="msg_success">Success.</string>
+    <string name="msg_failed">Failed.</string>
+    <string name="msg_input_all_fields">Input all fields.</string>
+    <string name="msg_login_failed">Login Failed.</string>
+    <string name="msg_url_empty">Url is empty.</string>
+    <string name="msg_sign_up_failed">SignUp Failed.</string>
+    <string name="msg_network_error">Network Error.</string>
+    <string name="msg_no_result">No result found.</string>
+    <string name="msg_json_error">JSON parsing error.</string>
+    <string name="msg_signing_in">Signing in...</string>
+    <string name="msg_loading">Loading...</string>
+    <string name="msg_uploading">Uploading...</string>
+    <string name="msg_warning">Warning</string>
+    <string name="msg_confirm_delete_notification">Are you sure to delete the notification?</string>
+    <string name="msg_confirm_delete_cert">Are you sure to delete all reservation items?</string>
+    <string name="msg_confirm_reservation">Are you sure to book these items?</string>
+    <string name="msg_confirm_delete_past_reservations">Are you sure to delete all past reservations?</string>
+    <string name="msg_dlg_wait_please">Please wait...</string>
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="More">More</string>
+    <string name="title_activity_cart">Reservations</string>
+    <string name="price">Price</string>
+    <string name="products">Products :</string>
+    <string name="renting_days">Arriving Hours</string>
+    <string name="checkin_date">Checkin Date</string>
+    <string name="reservation_date">Reservation Date :</string>
+    <string name="choose_q_ty">Choose q.ty</string>
+    <string name="attendees">Attendees</string>
+    <string name="arriving_hours">Arriving Hours</string>
+    <string name="set_checkin_date">Please set all checkin dates</string>
+    <string name="persons">People</string>
+    <string name="payment_method">Payment Method :</string>
+    <string name="payment_credit_card">Credit Card</string>
+    <string name="payment_paypal">Paypal</string>
+    <string name="_days">0 (days)</string>
+    <string name="_peoples">0 (peoples)</string>
+    <string name="total_price">Total Price</string>
+    <string name="item_name">Product Name</string>
+    <string name="item_count">Count</string>
+    <string name="invalid_date">Invalid Date</string>
+    <string name="invalid_time">Invalid Time</string>
+    <string name="invalid_date_time">Invalid Date and Time</string>
+    <string name="invalid_count">You can not book more than </string>
+    <string name="cannot_book">You can not book </string>
+    <string name="invalid_start_time">You can not book before </string>
+    <string name="invalid_end_time">You can not book after </string>
+
+    <string name="firebase_root_path">firebase_v4_diagnostic</string>
+
+    <!--Google Maps-->
+    <string name="google_maps_api_key">AIzaSyDhk2BmGnhRY5YunvYWCEs0r-aq4X32TO8</string>
+    <string name="firebase_cloud_messaging_server_key">AAAAEtzd30k:APA91bEAdtv_fwHEzow4gOVTrux_0kHntbiLjR0LaPYRvP1YDWWQKLYTbnEO8geRm8JCbuLNodUE4oaVbVjX_vJwr6zZWxUtRV0UtQb0YFDlY1eAuuqmnHmkMPXIT1rmnisD7V0Nm4w-</string>
+
+    <string name="title_set_goals">Set Goals</string>
+    <string name="label_start_date">Start Date :</string>
+    <string name="label_plan_weight">Plan Weight:</string>
+    <string name="label_end_date">End Date :</string>
+    <string name="label_week_days">Week Days</string>
+    <string name="label_exercise">Exercise</string>
+    <string name="label_mobility">Mobility</string>
+    <string name="label_stretching">Stretching</string>
+    <string name="label_pain_level">Pain Level</string>
+    <string name="label_weight">Weight</string>
+
+    <string name="btn_previous">Previous</string>
+    <string name="btn_next">Next</string>\
+    <string name="btn_save">Save</string>
+    <string name="mobility_videos">Mobility Videos</string>
+    <string name="stop_watch">Stop Watch</string>
+    <string name="select_any_body_parts">Select any body parts</string>
+    <string name="body">Body</string>
+    <string name="equipment">Equipment</string>
+    <string name="balls">Balls</string>
+    <string name="bands">Bands</string>
+    <string name="roller">Roller</string>
+    <string name="tool">Tool</string>
+
+    <string-array name="categories">
+        <item>Exercise</item>
+        <item>Mobility</item>
+        <item>Stretching</item>
+        <item>Sport</item>
+        <item>Cardio</item>
+    </string-array>
+    <string-array name="equipments">
+        <item>Balls</item>
+        <item>Bands</item>
+        <item>Roller</item>
+        <item>Tool</item>
+    </string-array>
+
+    <string name="action_today">Today</string>
+    <string name="action_day_view">Day view</string>
+    <string name="action_three_day_view">3 day view</string>
+    <string name="action_week_view">Week view</string>
+    <string name="title_activity_basic">Basic Example</string>
+    <string name="title_activity_asynchronous">Asynchronous Events</string>
+    <string name="async_error">Could not download events from the internet</string>
+
+</resources>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffe6e6e6"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbarView"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/background_toolbar_translucent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40.0dip"
+                android:layout_height="40.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/btn_back"
+                android:maxLines="1"
+                android:text="White Board"
+                android:textColor="@color/dark_gray"
+                android:textSize="17.0sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/action_chat"
+                android:layout_width="50.0dip"
+                android:layout_height="50.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:onClick="onClick"
+                android:padding="10.0dip"
+                android:src="@drawable/ic_action_chat" />
+
+            <!--  <ImageView
+                  android:id="@+id/action_camera"
+                  android:layout_width="50.0dip"
+                  android:layout_height="50.0dip"
+                  android:layout_centerVertical="true"
+                  android:layout_gravity="center"
+                  android:layout_marginLeft="10.0dip"
+                  android:layout_toLeftOf="@+id/action_chat"
+                  android:onClick="onClick"
+                  android:padding="10.0dip"
+                  android:src="@drawable/ic_action_cam" />
+  -->
+            <ImageView
+                android:id="@+id/action_clock"
+                android:layout_width="50.0dip"
+                android:layout_height="50.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toLeftOf="@+id/action_chat"
+                android:onClick="onClick"
+                android:padding="10.0dip"
+                android:src="@drawable/ic_action_5" />
+
+            <ImageView
+                android:id="@+id/action_home"
+                android:layout_width="50.0dip"
+                android:layout_height="50.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toLeftOf="@+id/action_clock"
+                android:onClick="onClick"
+                android:padding="10.0dip"
+                android:src="@drawable/ic_action_2" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="15.0dip"
+        android:background="#ffffffff">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30.0dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.75"
+                    android:background="#ffcb051f"
+                    android:gravity="center"
+                    android:text="WORKOUT"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="17.0dip" />
+
+                <TextView
+                    android:id="@+id/today_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.75"
+                    android:background="#ff000000"
+                    android:gravity="center"
+                    android:text="20/10/2010"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0dip" />
+
+                <ImageView
+                    android:id="@+id/timer_list_icon"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="#ffcb051f"
+                    android:onClick="onClick"
+                    android:padding="8.0dip"
+                    android:src="@drawable/ic_action_5" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/search_view"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:padding="10.0dip"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/search"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_toLeftOf="@+id/filter"
+                    android:background="@drawable/edt_bg"
+                    android:drawableLeft="@drawable/search_icon"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:hint="Search"
+                    android:paddingLeft="10.0dip"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageView
+                    android:id="@+id/mic"
+                    android:layout_width="30.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/filter"
+                    android:onClick="onClick"
+                    android:padding="5.0dip"
+                    android:src="@drawable/ic_mic_none" />
+
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_width="30.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_alignParentRight="true"
+                    android:onClick="onClick"
+                    android:padding="5.0dip"
+                    android:src="@drawable/filter_btn" />
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/video_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/ll_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/_10sdp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/save_note"
+                    android:layout_width="120.0dip"
+                    android:layout_height="30.0dip"
+                    android:background="@drawable/button_black"
+                    android:gravity="center"
+                    android:text="Notes"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="13.0dip" />
+
+                <TextView
+                    android:id="@+id/save_workout"
+                    android:layout_width="120.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/button_black"
+                    android:gravity="center"
+                    android:text="Save Workout"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

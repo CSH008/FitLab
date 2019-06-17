@@ -1,0 +1,184 @@
+package com.jq.app.ui.search;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Toast;
+
+import com.jq.app.R;
+import com.jq.app.data.content_helpers.BaseContentHelper;
+import com.jq.app.data.local_helpers.FavoriteHelper;
+import com.jq.app.data.content_helpers.VideoContentHelper;
+import com.jq.app.data.model.VideoModel;
+import com.jq.app.ui.base.BaseMainActivity;
+import com.jq.app.ui.exercise.ExerciseActivity;
+import com.jq.app.ui.search.adapter.VideoAdapter;
+import com.jq.app.util.Common;
+import com.jq.app.util.Constants;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+
+public class VideosActivity extends BaseMainActivity implements VideoAdapter.OnListFragmentInteractionListener,
+        BaseContentHelper.OnDataLoadListener, FavoriteHelper.LoadCompletionListener {
+
+    private int mColumnCount = 1;
+    EasyRecyclerView recyclerView;
+
+    VideoAdapter dataAdapter;
+    VideoContentHelper videoContent;
+
+    public static String KEY_BODY_PART_CODE = "key_body_part_code";
+    public static String KEY_WORKOUT_CODE = "key_workout_code";
+    public static String KEY_SEARCH_KEYWORD = "key_search_keyword";
+
+    public static String CODE_WORKOUT_MOBILITY_VIDEOS = "1";
+    public static String CODE_WORKOUT_EXERCISE_VIDEOS = "3";
+    public static String CODE_WORKOUT_STRETCHING_VIDEOS = "2";
+
+    @Override
+    public void onDeleteFavorite(VideoModel item) {
+
+    }
+
+    public String mWorkoutCode;
+    public String mBodyPartCode;
+    public String mSearchKeyword;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_videos);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle(" ");
+
+        mWorkoutCode = getIntent().getStringExtra(KEY_WORKOUT_CODE);
+        mBodyPartCode = getIntent().getStringExtra(KEY_BODY_PART_CODE);
+        mSearchKeyword = getIntent().getStringExtra(KEY_SEARCH_KEYWORD);
+
+        mProgressView = findViewById(R.id.view_progress);
+
+        recyclerView = findViewById(R.id.list);
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, mColumnCount));
+        }
+
+        getVideoData();
+        dataAdapter = new VideoAdapter(videoContent.ITEMS, this);
+        recyclerView.setAdapter(dataAdapter);
+        //recyclerView.setPullRefreshEnabled(false);
+        recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (videoContent != null) {
+                    getVideoData();
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        FavoriteHelper.getInstance().addListener(this);
+        tempItem = null;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        FavoriteHelper.getInstance().deleteListener(this);
+    }
+
+    public void getVideoData() {
+        showProgressView(true);
+        videoContent = new VideoContentHelper(this);
+        if(mBodyPartCode!=null) {
+            videoContent.getVideoData(mWorkoutCode, mBodyPartCode);
+
+        } else if(mSearchKeyword!=null) {
+            videoContent.getSearchVideos(mSearchKeyword, mWorkoutCode);
+        }
+    }
+
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            case R.id.btn_back:
+                finish();
+                break;
+        }
+    }
+
+    @Override
+    public void updateLikeStatus(VideoModel item) {
+        FavoriteHelper.getInstance().createItem(item);
+    }
+
+
+    private VideoModel tempItem;
+
+    @Override
+    public void onListFragmentInteraction(VideoModel item) {
+        Intent i = new Intent(this, ExerciseActivity.class);
+        i.putExtra(ExerciseActivity.KEY_VIDEO_ITEM, item);
+        i.putExtra(KEY_WORKOUT_CODE, mWorkoutCode);
+        startActivity(i);
+    }
+
+    @Override
+    public void finishedAction(int method, int message) {
+        if(message==0) {
+            finishedAction(method, "");
+        } else {
+            finishedAction(method, getString(message));
+        }
+    }
+
+    @Override
+    public void finishedAction(int method, String message) {
+        dataAdapter.notifyDataSetChanged();
+        hideProgressDialog();
+
+        if(message!=null && !message.isEmpty()) {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onFinishedAction(int action, int index, int errMsg) {
+        if(errMsg>0) {
+            onFinishedAction(action, index, getString(errMsg));
+        } else {
+            onFinishedAction(action, index, "");
+        }
+    }
+
+    @Override
+    public void onFinishedAction(int action, int index, String errMsg) {
+        recyclerView.setRefreshing(false);
+        showProgressView(false);
+
+        if(errMsg!=null && !errMsg.isEmpty()) {
+            showToast(errMsg);
+
+        } else {
+            switch (action) {
+                case VideoContentHelper.REQUEST_LIST:
+                    dataAdapter.notifyDataSetChanged();
+                    break;
+
+                case VideoContentHelper.REQUEST_SEARCH_LIST:
+                    dataAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+}

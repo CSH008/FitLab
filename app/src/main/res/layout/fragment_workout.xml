@@ -1,0 +1,384 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_dumbbell"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/excersize"
+                android:padding="5dp" />
+
+            <View
+                android:id="@+id/view_dumbbell"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#fc0303" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_body_exercises"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/roller"
+                android:padding="5dp" />
+
+            <View
+                android:id="@+id/view_exercise"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#fc0303" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_body_stretch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/stretch"
+                android:padding="5dp" />
+
+            <View
+                android:id="@+id/view_stretch"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#fc0303" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/btn_save"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/plus" />
+
+        </RelativeLayout>
+
+
+        &lt;!&ndash; <RadioGroup
+             android:id="@+id/radiogroup"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center"
+             android:orientation="horizontal">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_weight="1"
+                 android:layout_height="wrap_content">
+
+                 <RadioButton
+                     android:id="@+id/dumble"
+                     android:layout_width="30dp"
+                     android:layout_height="30dp"
+                     android:background="@drawable/rbtn_selector_dumbel"
+                     android:button="@null"
+                     android:checked="true"
+                     android:gravity="center"
+                     android:padding="5dp" />
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_weight="1"
+                 android:layout_height="wrap_content">
+
+                 <RadioButton
+                     android:id="@+id/streching"
+                     android:layout_width="30dp"
+                     android:layout_height="30dp"
+                     android:background="@drawable/rbtn_selector_streching"
+                     android:button="@null"
+                     android:gravity="center"
+                     android:padding="5dp" />
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_weight="1"
+                 android:layout_height="wrap_content">
+
+                 <RadioButton
+                     android:id="@+id/roller"
+                     android:layout_width="30dp"
+                     android:layout_height="30dp"
+                     android:background="@drawable/rbtn_selector_roller"
+                     android:button="@null"
+                     android:gravity="center"
+                     android:padding="5dp" />
+
+             </LinearLayout>
+
+         </RadioGroup>
+
+         <ImageView
+             android:id="@+id/btn_save"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="3"
+             android:src="@drawable/ic_action_add" />&ndash;&gt;
+
+
+    </LinearLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <cn.jzvd.JZVideoPlayerStandard
+            android:id="@+id/vv"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/play_button"
+            android:tint="@color/white" />
+
+        <!--<ImageView-->
+        <!--android:visibility="gone"-->
+        <!--android:id="@+id/iv_pause"-->
+        <!--android:padding="@dimen/_10sdp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:src="@drawable/pause"-->
+        <!--android:tint="@color/white" />-->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_weight="0.6"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_1sdp"
+                android:padding="@dimen/_2sdp"
+                android:text="BASE"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/tv_intermediate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_1sdp"
+                android:padding="@dimen/_2sdp"
+                android:text="INTERMEDIATE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/tv_advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_1sdp"
+                android:padding="@dimen/_2sdp"
+                android:text="ADVANCED"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/tv_proo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_1sdp"
+                android:padding="@dimen/_2sdp"
+                android:text="PRO"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/rounded_corner_black"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp" />
+        </LinearLayout>
+<View
+    android:layout_width="0.5dp"
+    android:background="@color/light_gray"
+    android:layout_height="@dimen/_170sdp"/>
+        <!--<LinearLayout-->
+        <!--android:layout_width="1dp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/light_gray">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_available_videos"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:text="Save"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:background="@drawable/rounded_corner"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="@dimen/_15sdp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+        <!---->
+        <!--</LinearLayout>-->
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/category_recyclerview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_sport"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_3sdp"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/_3sdp"-->
+                <!--android:text="SPORT"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_mobility"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_3sdp"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/_3sdp"-->
+                <!--android:text="MOBILITY"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_exercise"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_3sdp"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/_3sdp"-->
+                <!--android:text="EXERCISE"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_stretching"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_3sdp"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/_3sdp"-->
+                <!--android:text="STRETCHING"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_cardio"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_3sdp"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="@dimen/_3sdp"-->
+                <!--android:text="CARDIO"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/_12sdp" />-->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

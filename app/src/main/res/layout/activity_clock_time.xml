@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbarView"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/background_toolbar_translucent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40.0dip"
+                android:layout_height="40.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/btn_back"
+                android:maxLines="1"
+                android:text="Set Time"
+                android:textColor="@color/dark_gray"
+                android:textSize="17.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarView">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/header_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="0dp"
+                        android:text="AMRAP"
+                        android:textColor="#ff000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/add_bt"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/plus" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/header_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_marginBottom="10dp"
+                    android:text="Set Your Amrap Time"
+                    android:textColor="#ff000000"
+                    android:textSize="15dp" />
+
+                <com.jq.app.ui.views.CustomVideoView
+                    android:id="@+id/videoplayer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200.0dip"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/switch_ly"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header_title"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_title"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/lap_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10.0dip"
+                            android:text="Lap"
+                            android:textColor="#ff000000"
+                            android:textSize="15.0dip"
+                            android:visibility="gone" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/swich_lap_round"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/round_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10.0dip"
+                            android:text="Round"
+                            android:textColor="#ff000000"
+                            android:textSize="15.0dip"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/progress_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_above="@+id/pain_scales"
+                    android:layout_below="@+id/switch_ly"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip">
+
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/circleView"
+                        android:layout_width="180.0dip"
+                        android:layout_height="180.0dip"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/timer_br"
+                        android:padding="10.0dip"
+                        app:cpv_showUnit="false"
+                        app:cpv_text=""
+                        app:cpv_textMode="Text" />
+
+                    <RelativeLayout
+                        android:id="@+id/info_lay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <ImageView
+                            android:id="@+id/play"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:src="@drawable/ic_play_purple"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/pause"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:src="@drawable/ic_pause_purple"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:onClick="onClick"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textColor="#ffff2ef5"
+                            android:textSize="40.0dip"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/hint_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/info_lay"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="60dp"
+                        android:text="tab to start"
+                        android:textColor="#aaaaaaaa"
+                        android:textSize="15.0dip" />
+
+                    <RelativeLayout
+                        android:id="@+id/round_ly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:onClick="onClick">
+
+                        <TextView
+                            android:id="@+id/plus_txt"
+                            android:layout_width="50.0dip"
+                            android:layout_height="50.0dip"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/round_counter_pink"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="#ff000000"
+                            android:textSize="30.0dip" />
+
+                        <TextView
+                            android:id="@+id/round_cn_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/plus_txt"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5.0dip"
+                            android:text="ROUND COUNTER"
+                            android:textColor="#ff1e1e1e"
+                            android:textSize="10.0dip" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pain_scales"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/botton_scales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:paddingLeft="20.0dip"
+                        android:paddingRight="20.0dip"
+                        android:paddingBottom="10.0dip">
+
+                        <TextView
+                            android:id="@+id/pain_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Pain intensity Scale (0-10)"
+                            android:textColor="#ff666666"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pain_txt"
+                            android:layout_marginTop="10.0dip">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="40dp"
+                                android:layout_weight="1.0"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="BEFORE"
+                                    android:textColor="#ff666666"
+                                    android:textSize="14.0dip" />
+
+                                <Spinner
+                                    android:id="@+id/before_spinner"
+                                    android:layout_width="40.0dip"
+                                    android:layout_height="40.0dip"
+                                    android:layout_marginLeft="10.0dip"
+                                    android:background="@drawable/scale_selecter"
+                                    android:entries="@array/pain_scales"
+                                    android:gravity="center" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="AFTER"
+                                    android:textColor="#ff666666"
+                                    android:textSize="14.0dip" />
+
+                                <Spinner
+                                    android:id="@+id/after_spinner"
+                                    android:layout_width="40.0dip"
+                                    android:layout_height="40.0dip"
+                                    android:layout_marginLeft="10.0dip"
+                                    android:background="@drawable/scale_selecter"
+                                    android:entries="@array/pain_scales"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bottom_ly"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:layout_marginBottom="20.0dip"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/t1"
+                        android:layout_width="140.0dip"
+                        android:layout_height="30.0dip"
+                        android:background="@drawable/button_black"
+                        android:onClick="onClick"
+                        android:text="EMOM"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0dip" />
+
+                    <Button
+                        android:id="@+id/t2"
+                        android:layout_width="140.0dip"
+                        android:layout_height="30.0dip"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_toEndOf="@+id/t1"
+                        android:background="@drawable/button_black"
+                        android:onClick="onClick"
+                        android:text="STOPWATCH"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0dip" />
+
+                    <Button
+                        android:id="@+id/t3"
+                        android:layout_width="140.0dip"
+                        android:layout_height="30.0dip"
+                        android:layout_below="@+id/t1"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:background="@drawable/button_black"
+                        android:onClick="onClick"
+                        android:text="TABATA"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0dip" />
+
+                    <Button
+                        android:id="@+id/t4"
+                        android:layout_width="140.0dip"
+                        android:layout_height="30.0dip"
+                        android:layout_below="@+id/t1"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:layout_toEndOf="@+id/t3"
+                        android:background="@drawable/button_black"
+                        android:onClick="onClick"
+                        android:text="TIMER"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0dip" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

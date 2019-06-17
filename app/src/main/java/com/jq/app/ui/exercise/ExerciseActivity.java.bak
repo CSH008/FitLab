@@ -1,0 +1,600 @@
+package com.jq.app.ui.exercise;
+
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jq.app.R;
+import com.jq.app.data.content_helpers.SetContentHelper;
+import com.jq.app.data.local_helpers.FavoriteHelper;
+import com.jq.app.data.model.BaseModel;
+import com.jq.app.data.model.Favorite;
+import com.jq.app.data.model.SetModel;
+import com.jq.app.data.model.VideoModel;
+import com.jq.app.ui.MainActivity;
+import com.jq.app.ui.base.BaseMainActivity;
+import com.jq.app.ui.exercise.adapter.SetAdapter;
+import com.jq.app.ui.my_workout.VideoInList;
+import com.jq.app.ui.search.VideosActivity;
+import com.jq.app.ui.views.CustomVideoView;
+import com.jq.app.util.Common;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import at.grabner.circleprogress.CircleProgressView;
+import cn.jzvd.JZMediaManager;
+import cn.jzvd.JZVideoPlayer;
+import cn.jzvd.JZVideoPlayerStandard;
+
+public class ExerciseActivity extends BaseMainActivity implements SetAdapter.OnListItemInteractionListener,
+        FavoriteHelper.LoadCompletionListener, SetContentHelper.OnDataLoadListener {
+
+    private static final String TAG = "ExerciseActivity";
+
+    private CustomVideoView mCustomVideoView;
+
+    TextView titleView;
+    SeekBar painLevelSeekBar;
+    SeekBar seekTimeBar;
+    CircleProgressView circleView;
+    TextView timerText;
+    ImageView btn_timer_start;
+    ImageView btn_timer_reset;
+
+    View toolbarView;
+
+    FavoriteHelper favoriteHelper;
+    String videoFilePath;
+
+    LinearLayout setsView;
+    RecyclerView recyclerView;
+    SetAdapter dataAdapter;
+
+    boolean isRunningTimer = false;
+    int timerDuration = 0;
+    int currentPosition = 0;
+
+    SetContentHelper mHelper;
+    ArrayList<BaseModel> sets = new ArrayList<>();
+    int currentTimerIndex = -1;
+
+    VideoModel mVideo;
+    public static String KEY_VIDEO_ITEM = "video_item";
+
+    public String mWorkoutCode;
+    Button btnSetsReps;
+    String today;
+
+    private boolean is_my_workout = false;
+    private ArrayList<VideoModel> videoInListArrayList;
+    private int current_video_index = 0;
+    private int total_video_in_list = 0;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_exercise);
+
+        mHelper = new SetContentHelper(this);
+
+        Calendar calendar = Calendar.getInstance();
+        today = Common.getStringDate(calendar);
+
+        toolbarView = findViewById(R.id.toolbarView);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        /**
+         * check for my workout
+         */
+        try {
+            is_my_workout = getIntent().getExtras().getBoolean("is_my_workout");
+            videoInListArrayList = (ArrayList<VideoModel>) getIntent().getExtras().getSerializable("video_in_list_array");
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        initPlayer();
+
+        mWorkoutCode = getIntent().getStringExtra(VideosActivity.KEY_WORKOUT_CODE);
+        if (mWorkoutCode == null || mWorkoutCode.isEmpty()) {
+            if (mVideo.work_out_code != null && !mVideo.work_out_code.isEmpty()) {
+                mWorkoutCode = mVideo.work_out_code;
+
+            } else {
+                finish();
+                return;
+            }
+        }
+
+        btnSetsReps = findViewById(R.id.btn_sets_reps);
+        if (mWorkoutCode.equals(VideosActivity.CODE_WORKOUT_EXERCISE_VIDEOS)) {
+            btnSetsReps.setVisibility(View.VISIBLE);
+        }
+
+        timerText = findViewById(R.id.timerText);
+        circleView = findViewById(R.id.circleView);
+        painLevelSeekBar = findViewById(R.id.painLevelSeekBar);
+        seekTimeBar = findViewById(R.id.seekTimeBar);
+        seekTimeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // TODO Auto-generated method stub
+                timerText.setText(getTimeValue(progress));
+                circleView.setMaxValue(progress);
+                timerDuration = progress;
+                resetTimer();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        btn_timer_start = findViewById(R.id.btn_timer_start);
+        btn_timer_reset = findViewById(R.id.btn_timer_reset);
+        timerDuration = 60;
+        currentPosition = 60;
+
+        favoriteHelper = FavoriteHelper.getInstance();
+        favoriteHelper.addListener(this);
+        Favorite favorite = (Favorite) favoriteHelper.getItem(mVideo.id);
+        if (favorite != null) {
+            showUploadingProgressDialog("Downloading ...");
+            favoriteHelper.downloadVideo(favorite, true);
+
+        } else {
+            videoFilePath = mVideo.url;
+            setAndStartVideo(videoFilePath);
+        }
+
+        setsView = findViewById(R.id.setsView);
+        recyclerView = findViewById(R.id.setsList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        for (int i = 0; i < 5; i++) {
+            sets.add(new SetModel(mVideo.id, painLevelSeekBar.getProgress()));
+        }
+        dataAdapter = new SetAdapter(sets, this);
+        recyclerView.setAdapter(dataAdapter);
+
+        getSets();
+    }
+
+    public void getSets() {
+        showProgressDialog();
+        mHelper.getData(mVideo.id, today);
+    }
+
+    static boolean isDownloading = false;
+
+    public void setAndStartVideo(final String path) {
+        Log.e(TAG, " mVideo.url : " +  mVideo.url);
+        Log.e(TAG, " mVideo.thumbnail_url : " +  mVideo.thumbnail_url);
+
+        mCustomVideoView.setUp(path, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, " ");
+        Picasso.with(this).load(mVideo.thumbnail_url).into(mCustomVideoView.thumbImageView);
+
+
+        if (mVideo.title != null) {
+            titleView.setText(mVideo.title);
+        }
+        setTitle(" ");
+
+        /*Favorite favorite = (Favorite) FavoriteHelper.getInstance().getItem(mVideo.id);
+        if(favorite!=null) {
+            File file = new File(path);
+            if (file.exists()) file.delete();
+            if(!isDownloading) {
+                showUploadingProgressDialog("Downloading ...");
+                favoriteHelper.downloadVideo(favorite, true);
+                isDownloading = true;
+            }
+        }
+        return false;*/
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause ");
+        JZVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        FavoriteHelper.getInstance().deleteListener(this);
+    }
+
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            case R.id.btn_timer_start:
+                processTimer();
+                //setAndStartVideo(videoFilePath);
+//                JZVideoPlayerStandard.startFullscreen(this, JZVideoPlayerStandard.class, videoFilePath, "Hasnain");
+
+                if (isRunningTimer) {
+                    mCustomVideoView.playPause();
+                }
+
+
+                break;
+
+            case R.id.btn_timer_reset:
+                resetTimer();
+                break;
+
+            case R.id.start_timer:
+                if (timerDuration > 0) {
+                    Intent intent = new Intent(this, TimerActivity.class);
+                    intent.putExtra(TimerActivity.KEY_TIMER_DURATION, timerDuration);
+                    startActivity(intent);
+                }
+                break;
+
+            case R.id.btn_sets_reps:
+               setsView.setVisibility(View.VISIBLE);
+                if (currentTimerIndex > -1)
+                    dataAdapter.updateTime(currentTimerIndex, timerDuration);
+                break;
+
+            case R.id.touch_outside:
+                setsView.setVisibility(View.GONE);
+                break;
+
+            case R.id.btnAddSet:
+                addSet();
+                break;
+
+            case R.id.btn_back:
+                if (setsView.getVisibility() == View.VISIBLE) {
+                    setsView.setVisibility(View.GONE);
+                    btnSetsReps.setVisibility(View.VISIBLE);
+                } else {
+                    finish();
+                }
+                break;
+
+            case R.id.btn_save:
+                if (mWorkoutCode.equals(VideosActivity.CODE_WORKOUT_EXERCISE_VIDEOS)) {
+                    for (int i = 0; i < sets.size(); i++) {
+                        SetModel item = (SetModel) sets.get(i);
+                        if (item.reps < 0 || item.sets < 0 || item.time <= 0) {
+                            showToast("Please set timer");
+                            return;
+                        }
+                    }
+
+                    showProgressDialog();
+                    mHelper.deleteAllVideoSets(mVideo.id, today);
+
+                } else {
+                    saveWorkout();
+                }
+
+                break;
+        }
+    }
+
+    private void addSet() {
+        dataAdapter.addItem(new SetModel(mVideo.id, painLevelSeekBar.getProgress()));
+    }
+
+    private String getTimeValue(int progress) {
+        //Log.e(TAG,"progress : "+progress);
+        String result = "";
+        int mins = progress / 60;
+        int secs = progress - mins * 60;
+        result = "" + mins + ":" + String.format("%02d", secs);
+        return result;
+    }
+
+    private void processTimer() {
+        if (isRunningTimer) {
+            pauseTimer();
+
+        } else {
+            startTimer();
+        }
+    }
+
+    private Timer mTimer;
+
+    private void startTimer() {
+        isRunningTimer = true;
+        btn_timer_start.setImageResource(R.mipmap.pause);
+        mTimer = new Timer();
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                currentPosition--;
+                runOnUiThread(new Thread() {
+                    public void run() {
+                        if (currentPosition <= 0) {
+                            resetTimer();
+                        } else {
+                            updateTimerUI();
+                        }
+                    }
+                });
+
+            }
+        }, 0, 1000);
+    }
+
+    private void pauseTimer() {
+        if (mTimer != null) {
+            isRunningTimer = false;
+            btn_timer_start.setImageResource(R.mipmap.start);
+            mTimer.cancel();
+
+            if (JZMediaManager.isPlaying()) {
+                mCustomVideoView.playPause();
+            }
+
+
+        }
+    }
+
+    private void resetTimer() {
+        if (isRunningTimer) {
+            pauseTimer();
+        }
+        currentPosition = timerDuration;
+        updateTimerUI();
+    }
+
+    private void updateTimerUI() {
+        timerText.setText(getTimeValue(currentPosition));
+        int circleProgress = timerDuration - currentPosition;
+        circleView.setValue(circleProgress);
+    }
+
+    private void switchTitleBar(boolean show) {
+        android.support.v7.app.ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            if (show) {
+                toolbarView.setVisibility(View.VISIBLE);
+                supportActionBar.show();
+
+            } else {
+                toolbarView.setVisibility(View.GONE);
+                supportActionBar.hide();
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JZVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    @Override
+    public void finishedAction(int method, int message) {
+        if (message == 0) {
+            finishedAction(method, null);
+
+        } else {
+            finishedAction(method, getString(message));
+        }
+    }
+
+    @Override
+    public void finishedAction(int method, String message) {
+        hideProgressDialog();
+        if (dataAdapter != null) dataAdapter.notifyDataSetChanged();
+
+        switch (method) {
+            case FavoriteHelper.ACTION_DOWNLOADED:
+                isDownloading = false;
+                hideUploadingProgressDialog();
+                Favorite favorite = (Favorite) FavoriteHelper.getInstance().getItem(mVideo.id);
+                if (favorite != null && favorite.localPath != null && !favorite.localPath.isEmpty()) {
+                    videoFilePath = favorite.localPath;
+                    setAndStartVideo(videoFilePath);
+                }
+                break;
+        }
+
+        if (message != null && !message.isEmpty()) {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onClickedTimer(int position) {
+        currentTimerIndex = position;
+        setsView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onClickedDelete(int position) {
+        sets.remove(position);
+        dataAdapter.notifyDataSetChanged();
+    }
+
+    public void saveWorkout() {
+        showProgressDialog();
+        mHelper.saveWorkout(timerDuration, painLevelSeekBar.getProgress(), today);
+    }
+
+    int postingStatus = 0;
+
+    public void saveSets() {
+        postingStatus = 0;
+        if (sets.size() == 0) {
+            showToast("You need to add sets.");
+            hideProgressDialog();
+            return;
+        }
+
+        for (int i = 0; i < sets.size(); i++) {
+            SetModel item = (SetModel) sets.get(i);
+            item.order_number = i;
+            postSet(item);
+        }
+    }
+
+    public void postSet(SetModel item) {
+        mHelper.postSet(item, today);
+    }
+
+
+    @Override
+    public void onFinishedAction(int action, int index, int errMsg) {
+        if (errMsg > 0) {
+            onFinishedAction(action, index, getString(errMsg));
+        } else {
+            onFinishedAction(action, index, "");
+        }
+    }
+
+    @Override
+    public void onFinishedAction(int action, int index, String errMsg) {
+        if (errMsg != null && !errMsg.isEmpty()) {
+            hideProgressDialog();
+            showToast(errMsg);
+        }
+
+        switch (action) {
+            case SetContentHelper.REQUEST_LIST:
+                hideProgressDialog();
+                sets.clear();
+                if (mHelper.ITEMS.size() > 0) {
+                    sets.addAll(mHelper.ITEMS);
+                } else {
+                    sets.add(new SetModel(mVideo.id, painLevelSeekBar.getProgress(), timerDuration));
+                }
+                dataAdapter.notifyDataSetChanged();
+                break;
+
+            case SetContentHelper.REQUEST_DELETE_ALL:
+                saveSets();
+                break;
+
+            case SetContentHelper.REQUEST_CREATE:
+                postingStatus++;
+                if (postingStatus == sets.size()) {
+                    hideProgressDialog();
+                    showToast(R.string.msg_success);
+                    setsView.setVisibility(View.GONE);
+                }
+                break;
+
+            case SetContentHelper.REQUEST_CREATE_WORKOUT:
+                hideProgressDialog();
+                showToast(R.string.msg_success);
+
+                setsView.setVisibility(View.GONE);
+                btnSetsReps.setVisibility(View.VISIBLE);
+
+                break;
+
+            default:
+                hideProgressDialog();
+                break;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.action_home:
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * init video object
+     */
+    private void initPlayer() {
+        titleView = findViewById(R.id.titleView);
+        mCustomVideoView = (CustomVideoView) findViewById(R.id.videoplayer);
+        mCustomVideoView.widthRatio = 16;
+        mCustomVideoView.heightRatio = 9;
+
+        if (is_my_workout) {
+//            total_video_in_list = (videoInListArrayList.size() - 1);
+            total_video_in_list = videoInListArrayList.size();
+            Log.e(TAG, "total_video_in_list : " + total_video_in_list);
+            mVideo = videoInListArrayList.get(current_video_index);
+            current_video_index += 1;
+
+        } else {
+            mVideo = (VideoModel) getIntent().getExtras().getSerializable(KEY_VIDEO_ITEM);
+        }
+
+
+
+
+    }
+
+
+    public void next() {
+        if (is_my_workout) {
+            Log.e(TAG, "current_video_index : " + current_video_index);
+
+            if (current_video_index >= total_video_in_list)
+                current_video_index = 0;
+
+            mVideo = videoInListArrayList.get(current_video_index);
+            current_video_index++;
+
+        } else {
+            mVideo = (VideoModel) getIntent().getExtras().getSerializable(KEY_VIDEO_ITEM);
+        }
+
+
+        setAndStartVideo(mVideo.url);
+
+        mCustomVideoView.startVideo();
+    }
+
+}

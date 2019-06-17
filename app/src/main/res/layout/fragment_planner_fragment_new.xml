@@ -1,0 +1,260 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.jq.app.ui.PlannerNew.PlannerFragmentNew">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="#b2b0b0" />
+
+            <TextView
+                android:id="@+id/tv_available_videos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="112 exercises matches in this"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="#b2b0b0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_dumbbell"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/excersize"
+                        android:padding="5dp" />
+
+                    <View
+                        android:id="@+id/view_dumbbell"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#fc0303" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_body_exercises"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/roller"
+                        android:padding="5dp" />
+
+                    <View
+                        android:id="@+id/view_exercise"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#fc0303" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_body_stretch"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/stretch"
+                        android:padding="5dp" />
+
+                    <View
+                        android:id="@+id/view_stretch"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#fc0303" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/btn_save"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/plus" />
+
+                </RelativeLayout>
+
+
+                <!-- <RadioGroup
+                     android:id="@+id/radiogroup"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:gravity="center"
+                     android:orientation="horizontal">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_weight="1"
+                         android:layout_height="wrap_content">
+
+                         <RadioButton
+                             android:id="@+id/dumble"
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:background="@drawable/rbtn_selector_dumbel"
+                             android:button="@null"
+                             android:checked="true"
+                             android:gravity="center"
+                             android:padding="5dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_weight="1"
+                         android:layout_height="wrap_content">
+
+                         <RadioButton
+                             android:id="@+id/streching"
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:background="@drawable/rbtn_selector_streching"
+                             android:button="@null"
+                             android:gravity="center"
+                             android:padding="5dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_weight="1"
+                         android:layout_height="wrap_content">
+
+                         <RadioButton
+                             android:id="@+id/roller"
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:background="@drawable/rbtn_selector_roller"
+                             android:button="@null"
+                             android:gravity="center"
+                             android:padding="5dp" />
+
+                     </LinearLayout>
+
+                 </RadioGroup>
+
+                 <ImageView
+                     android:id="@+id/btn_save"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="3"
+                     android:src="@drawable/ic_action_add" />-->
+
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#b2b0b0" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:orientation="horizontal">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="#b2b0b0" />
+
+                <View
+                    android:layout_width="1.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7">
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview_child"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#565656" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_drag_n_drop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="drag exercises here to make workout"
+                            android:textColor="#FFFFFF" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

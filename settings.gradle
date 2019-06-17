@@ -1,0 +1,1 @@
+include ':app', ':image-chooser-library', ':chat-sdk-firebase-push', ':country_picker', ':facebook', ':sdk', ':firebase_plugin', ':frescoimageviewer', ':generator', ':jiaozivideoplayer', ':ShortcutBadger', ':calendar', ':time_calendar'

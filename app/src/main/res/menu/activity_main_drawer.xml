@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_note"
+            android:icon="@drawable/ic_note"
+            android:title="Note" />
+
+        <item
+            android:id="@+id/nav_sport"
+            android:icon="@drawable/ic_sport_black_24dp"
+            android:title="Sport" />
+
+        <item
+            android:id="@+id/nav_planner"
+            android:icon="@drawable/ic_icon_agenda"
+            android:title="Planner" />
+
+        <item
+            android:id="@+id/nav_my_workout"
+            android:icon="@drawable/ic_icon_my_workut"
+            android:title="My Workout" />
+
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendar" />
+
+        <item
+            android:id="@+id/nav_my_media"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="My Media" />
+
+
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/ic_favorite"
+            android:title="Favorite" />
+
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share" />
+
+        <item
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/ic_credit_card_black_24dp"
+            android:title="Payment" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
+
+    </group>
+
+    <!--<item android:title="Authentication">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
+        </menu>
+    </item>-->
+
+    <!-- <item
+         android:id="@+id/nav_share"
+         android:title="Share"
+         android:icon="@drawable/ic_share"
+         app:actionProviderClass="android.widget.ShareActionProvider" />-->
+
+
+</menu>

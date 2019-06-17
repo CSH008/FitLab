@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbarView"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/background_toolbar_translucent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40.0dip"
+                android:layout_height="40.0dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10.0dip"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/btn_back"
+                android:maxLines="1"
+                android:text="Set Time"
+                android:textColor="@color/dark_gray"
+                android:textSize="17.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/header_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:text="AMRAP"
+        android:textColor="#ff000000"
+        android:textSize="30.0dip"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5.0dip"
+        android:text="Set Your Amrap Time"
+        android:textColor="#ff000000"
+        android:textSize="15.0dip" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/round_select"
+        android:layout_below="@+id/header_name"
+        android:layout_marginBottom="10.0dip">
+
+        <com.aigestudio.wheelpicker.WheelPicker
+            android:id="@+id/wheel_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity=""
+            android:layout_marginTop="?actionBarSize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/round_select"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ok"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/round_visible"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ROUND"
+                android:textColor="#ff666666"
+                android:textSize="20.0dip" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="40.0dip"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/scale_selecter"
+                android:entries="@array/round_scales"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="120.0dip"
+        android:layout_height="40.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20.0dip"
+        android:background="#ffff2ef5"
+        android:onClick="onClick"
+        android:text="OK"
+        android:textColor="#ffffffff"
+        android:textSize="18.0dip" />
+</RelativeLayout>

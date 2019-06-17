@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="50dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_corner_tabata">
+
+
+        <com.aigestudio.wheelpicker.WheelPicker
+            android:id="@+id/tabata_wheel_picker"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tabata_wheel_picker"
+            android:layout_marginTop="20dp"
+            android:background="#fffc6604" />
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/view1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="OK"
+            android:textColor="#fffc6604"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

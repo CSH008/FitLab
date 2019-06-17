@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/chat_sdk_actionbar" />
+
+    <RelativeLayout
+        android:id="@+id/chat_sdk_root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chat_sdk_txt_status"
+            style="@style/ProfileViewTextViewStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/status"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/chat_sdk_et_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chat_sdk_txt_status"
+            android:ellipsize="end"
+            android:inputType="textShortMessage|textMultiLine"
+            android:isScrollContainer="true"
+            android:maxLength="@integer/chat_sdk_max_status_length"
+            android:maxLines="5"
+            android:padding="5dp" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chat_sdk_et_status"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/chat_sdk_ic_name"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_name" />
+
+                <EditText
+                    android:id="@+id/chat_sdk_et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/chat_sdk_ic_name"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapWords" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/chat_sdk_ic_phone"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_phone" />
+
+                <EditText
+                    android:id="@+id/chat_sdk_et_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/chat_sdk_ic_phone"
+                    android:ems="10"
+                    android:hint="@string/location_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_male"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/two_part_button_left_selector"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/male"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/btn_female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/two_part_button_right_selector"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/female"
+                    android:textColor="@color/dark_gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/chat_sdk_select_country_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_sdk_edit_profile_select_country" />
+
+                <ImageView
+                    android:id="@+id/chat_sdk_country_ic"
+                    style="@style/CountryIconStyle"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/chat_sdk_pick_birth_date_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_sdk_edit_profile_pick_birth_date" />
+
+                <TextView
+                    android:id="@+id/txt_date_of_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/chat_sdk_app_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/chat_sdk_logout_button"
+            android:layout_centerHorizontal="true"
+            android:text="@string/app_info" />
+
+        <Button
+            android:id="@+id/chat_sdk_logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/logout" />
+
+    </RelativeLayout>
+</LinearLayout>

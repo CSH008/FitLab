@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dot_categories">
+        <item>Exercise</item>
+        <item>Roller</item>
+        <item>Mobility</item>
+    </string-array>
+
+    <string-array name="dot_sub_categories">
+        <item>chest</item>
+        <item>shoulder</item>
+        <item>bicep</item>
+        <item>forearm</item>
+        <item>wrist</item>
+        <item>abs</item>
+        <item>quad</item>
+        <item>knee</item>
+        <item>shin</item>
+        <item>ankle</item>
+        <item>tricep</item>
+        <item>elbow</item>
+        <item>fore arm</item>
+        <item>hamstring</item>
+        <item>calf</item>
+        <item>mid back</item>
+        <item>lower back</item>
+        <item>fore form</item>
+        <item>glute</item>
+        <item>achilles</item>
+    </string-array>
+
+    <integer-array name="local_view_coordinates_full_screen">
+        <item>55</item>
+        <item>65</item>
+        <item>43</item>
+        <item>34</item>
+    </integer-array>
+
+
+
+    <string-array name="pain_scales">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="round_scales">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+
+</resources>

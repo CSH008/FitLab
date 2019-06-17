@@ -1,0 +1,200 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+apply plugin: 'realm-android'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
+//    buildToolsVersion '27.0.3'
+
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    defaultConfig {
+        applicationId APPLICATION_ID
+
+        minSdkVersion 21
+//        minSdkVersion Integer.parseInt(project.MIN_SDK)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+        multiDexEnabled true
+
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('/media/braunster/Code/Android/braunserkey')
+            keyAlias 'braunsteralias'
+            keyPassword 'Itzikbraun1991'
+            storePassword 'Itzikbraun1991'
+        }
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+            debuggable false
+            jniDebuggable false
+            zipAlignEnabled true
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    applicationVariants.all { variant ->
+        changeApkFileName(variant)
+    }
+
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+def changeApkFileName(variant) {
+    variant.outputs.each { output ->
+        def file = output.outputFile
+        def newName = APPLICATION_ID + '.vn_' + VERSION_NAME + '.vc_' + VERSION_CODE + '-' + variant.buildType.name + '.apk'
+        //   output.outputFile = new File(file.parent, newName)
+    }
+}
+
+android {
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.1.0'
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+//    compileOnly 'com.google.dagger:dagger:26.1.0'
+//    annotationProcessor 'com.google.dagger:dagger-compiler:26.1.0'
+
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+//    implementation 'com.android.support:palette-v7:26.1.0-alpha1'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
+    implementation 'com.amitshekhar.android:android-networking:1.0.0'
+    implementation 'me.drakeet.materialdialog:library:1.3.1'
+    implementation 'com.afollestad.material-dialogs:core:0.8.6.0'
+    implementation 'com.afollestad.material-dialogs:commons:0.8.6.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.3'
+    implementation 'com.daimajia.androidanimations:library:1.1.3@aar'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+    implementation 'com.daimajia.easing:library:1.0.1@aar'
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    implementation 'com.akexorcist:localizationactivity:1.1.1'
+    implementation 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.1'
+    implementation 'com.bluelinelabs:logansquare-compiler:1.3.7'
+    implementation 'com.bluelinelabs:logansquare-compiler:1.3.7'
+    implementation 'com.jude:easyrecyclerview:4.4.2'
+    implementation 'com.github.jakob-grabner:Circle-Progress-View:v1.3'
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.wdullaer:materialdatetimepicker:3.4.0'
+    //   testImplementation 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    annotationProcessor 'org.immutables:value:2.4.4'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.0'
+    implementation project(':image-chooser-library')
+    implementation project(':calendar')
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation 'com.github.Cloudist:ImageViewer:1.1.5'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //compile 'de.hdodenhof:circleimageview:2.2.0'
+    implementation project(path: ':firebase_plugin')
+    implementation project(':firebase_plugin')
+    implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
+    }
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.devbrackets.android:exomedia:4.1.0'
+
+
+    implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+
+    //retrofit and networking library
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //Logger
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation project(path: ':time_calendar')
+
+    //compile 'cn.jzvd:jiaozivideoplayer:6.2.4'
+    //compile project(':jiaozivideoplayer')
+}
+
+task copyDependencies(type: Copy) {
+    from configurations.compile
+    into 'dependencies'
+}

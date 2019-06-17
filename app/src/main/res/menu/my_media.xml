@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jq.app.ui.my_media.MyMediaFragment" >
+
+    <item
+        android:id="@+id/action_category"
+        android:title="@string/title_exercise"
+        android:icon="@mipmap/exercise_videos"
+        app:showAsAction="always" >
+        <menu>
+            <item
+                android:id="@+id/action_exercise"
+                android:title="@string/title_exercise"
+                android:icon="@mipmap/exercise_videos"/>
+            <item
+                android:id="@+id/action_mobility"
+                android:title="@string/title_mobility"
+                android:icon="@mipmap/roller_videos"/>
+            <item
+                android:id="@+id/action_stretching"
+                android:title="@string/title_stretching"
+                android:icon="@mipmap/stretching_videos"/>
+        </menu>
+    </item>
+</menu>
